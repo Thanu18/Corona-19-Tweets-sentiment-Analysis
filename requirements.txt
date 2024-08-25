@@ -1,0 +1,23 @@
+# Core packages
+numpy==1.23.5
+pandas==2.0.1
+scikit-learn==1.3.2
+imbalanced-learn==0.11.1
+nltk==3.8.1
+matplotlib==3.8.0
+seaborn==0.12.2
+emoji==2.2.0
+
+# Deep learning frameworks
+tensorflow==2.14.0
+keras==2.14.0
+
+# Hugging Face Transformers library
+transformers==4.33.0
+
+# Padding sequences
+keras==2.14.0
+
+# For text processing and tokenization
+tokenizers==0.13.3
+
