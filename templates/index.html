@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Prediction App</title>
+</head>
+<body>
+    <h1>Sentiment Prediction App</h1>
+    <form action="/predict" method="post">
+        <label for="text">Enter a sentence:</label><br>
+        <textarea id="text" name="text" rows="4" cols="50"></textarea><br><br>
+        <input type="submit" value="Predict Sentiment">
+    </form>
+    <div id="result">
+        <h2>Result:</h2>
+        <p id="sentiment"></p>
+    </div>
+
+    <script>
+        const form = document.querySelector('form');
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const text = document.querySelector('#text').value;
+
+            const response = await fetch('/predict', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                },
+                body: new URLSearchParams({ 'text': text })
+            });
+
+            const result = await response.json();
+            document.querySelector('#sentiment').textContent = result.sentiment || result.error;
+        });
+    </script>
+</body>
+</html>
